@@ -1,3 +1,7 @@
+## [threatgrid] 0.26.3 (?)
+
+* Fix memory leaks via multimethods caching default dispatch values
+
 ## 0.26.2 (1.4.2019)
 
 * `s/eq` is mapped into enum by [Joel Kaasinen](https://github.com/opqdonut).
