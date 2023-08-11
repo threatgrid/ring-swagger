@@ -1,4 +1,4 @@
-(defproject metosin/ring-swagger "0.26.2"
+(defproject io.github.threatgrid/ring-swagger "0.26.3-SNAPSHOT"
   :description "Swagger Spec for Ring Apps"
   :url "https://github.com/metosin/ring-swagger"
   :license {:name "Eclipse Public License"
@@ -20,18 +20,21 @@
                              [lein-ring "0.12.5"]
                              [lein-midje "3.2.1"]
                              [funcool/codeina "0.5.0"]]
-                   :dependencies [[org.clojure/clojure "1.8.0"]
+                   :dependencies [[org.clojure/clojure "1.11.1"]
                                   [midje "1.9.6" :exclusions [org.clojure/clojure
                                                               commons-codec]]
                                   [ring-mock "0.1.5"]
                                   [metosin/ring-swagger-ui "3.20.1"]
                                   [javax.servlet/javax.servlet-api "4.0.1"]]}
              :1.7 {:dependencies [[org.clojure/clojure "1.7.0"]]}
-             :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}}
+             :1.8 {:dependencies [[org.clojure/clojure "1.8.0"]]}
+             :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}
+             :1.10 {:dependencies [[org.clojure/clojure "1.10.1"]]}
+             :1.12 {:dependencies [[org.clojure/clojure "1.12.0-alpha4"]]}}
   :codeina {:sources ["src"]
             :target "gh-pages/doc"
-            :src-uri "http://github.com/metosin/ring-swagger/blob/master/"
+            :src-uri "https://github.com/threatgrid/ring-swagger/blob/master/"
             :src-uri-prefix "#L"}
   :deploy-repositories [["releases" :clojars]]
-  :aliases {"all" ["with-profile" "dev:dev,1.7:dev,1.9"]
+  :aliases {"all" ["with-profile" "dev:dev,1.7:dev,1.8:dev,1.9:dev,1.10:dev,1.12"]
             "test-ancient" ["midje"]})
