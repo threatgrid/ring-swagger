@@ -31,10 +31,27 @@
              :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}
              :1.10 {:dependencies [[org.clojure/clojure "1.10.1"]]}
              :1.12 {:dependencies [[org.clojure/clojure "1.12.0-alpha4"]]}}
+  :deploy-repositories [["snapshot" {:url "https://clojars.org/repo"
+                                     :username :env/clojars_user
+                                     :password  :env/clojars_token
+                                     :sign-releases false}]
+                        ["release" {:url "https://clojars.org/repo"
+                                    :username :env/clojars_user
+                                    :password  :env/clojars_token
+                                    :sign-releases false}]]
   :codeina {:sources ["src"]
             :target "gh-pages/doc"
             :src-uri "https://github.com/threatgrid/ring-swagger/blob/master/"
             :src-uri-prefix "#L"}
-  :deploy-repositories [["releases" :clojars]]
+  :release-tasks [["clean"]
+                  ["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag" "--no-sign"]
+                  ;["shell" "./script/deploy-doc"]
+                  ["deploy" "release"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]]
   :aliases {"all" ["with-profile" "dev:dev,1.7:dev,1.8:dev,1.9:dev,1.10:dev,1.12"]
             "test-ancient" ["midje"]})
