@@ -1,4 +1,4 @@
-## [threatgrid] 0.26.3 (?)
+## io.github.threatgrid/ring-swagger 0.26.3 (15.8.2023)
 
 * Fix memory leaks via multimethods caching default dispatch values
 
